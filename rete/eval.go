@@ -66,19 +66,19 @@ func Eval(exp ast.Expr, env Env) (result []reflect.Value, err error) {
 }
 
 func EvalCall(exp *ast.CallExpr, env Env) (result []reflect.Value, err error) {
-	f_val, err := Eval(exp.Fun, env)
+	fVal, err := Eval(exp.Fun, env)
 	if err != nil {
 		return
 	}
-	var args_val []reflect.Value
+	var argsVal []reflect.Value
 	for _, arg := range exp.Args {
-		arg_val, err := Eval(arg, env)
+		argVal, err := Eval(arg, env)
 		if err != nil {
 			return result, err
 		}
-		args_val = append(args_val, arg_val[0])
+		argsVal = append(argsVal, argVal[0])
 	}
-	result = f_val[0].Call(args_val)
+	result = fVal[0].Call(argsVal)
 	return
 }
 

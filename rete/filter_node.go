@@ -25,11 +25,11 @@ func (node FilterNode) GetChildren() *list.List {
 func (node *FilterNode) RightActivation(w *WME) {
 }
 func (node *FilterNode) LeftActivation(t *Token, w *WME, b Env) {
-	all_binding := t.AllBinding()
+	allBinding := t.AllBinding()
 	for k, v := range b {
-		all_binding[k] = v
+		allBinding[k] = v
 	}
-	result, err := EvalFromString(node.tmpl, all_binding)
+	result, err := EvalFromString(node.tmpl, allBinding)
 	if err != nil || len(result) == 0 {
 		return
 	}

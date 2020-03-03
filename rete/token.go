@@ -19,7 +19,7 @@ type Token struct {
 	binding     Env
 }
 
-func (tok *Token) get_wmes() []*WME {
+func (tok *Token) getWMEs() []*WME {
 	var ret []*WME
 	_ws := list.New()
 	_ws.PushFront(tok.wme)
@@ -68,7 +68,7 @@ func (tok *Token) deleteTokenAndDescendents() {
 
 func (tok Token) String() string {
 	ret := []string{}
-	wmes := tok.get_wmes()
+	wmes := tok.getWMEs()
 	for _, v := range wmes {
 		s := fmt.Sprintf("%s", v)
 		ret = append(ret, s)

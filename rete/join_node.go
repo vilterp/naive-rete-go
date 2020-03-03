@@ -66,7 +66,7 @@ func (node *JoinNode) performJoinTests(t *Token, w *WME) bool {
 	for e := node.tests.Front(); e != nil; e = e.Next() {
 		test := e.Value.(*TestAtJoinNode)
 		arg1 := w.fields[test.fieldOfArg1]
-		wme2 := t.get_wmes()[test.conditionNumberOfArg2]
+		wme2 := t.getWMEs()[test.conditionNumberOfArg2]
 		arg2 := wme2.fields[test.fieldOfArg2]
 		if arg1 != arg2 {
 			return false
