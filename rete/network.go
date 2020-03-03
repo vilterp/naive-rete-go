@@ -164,13 +164,13 @@ func (n Network) buildOrShareFilterNode(parent IReteNode, f Filter) IReteNode {
 			}
 		}
 	}
-	filter_node := &FilterNode{
+	filterNode := &FilterNode{
 		parent:   parent,
 		children: list.New(),
 		tmpl:     f.tmpl,
 	}
-	parent.GetChildren().PushBack(filter_node)
-	return filter_node
+	parent.GetChildren().PushBack(filterNode)
+	return filterNode
 }
 
 func (n Network) buildOrShareNccNodes(parent IReteNode, ncc LHS, earlier LHS) IReteNode {

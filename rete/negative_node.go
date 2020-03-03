@@ -35,7 +35,7 @@ func (node *NegativeNode) LeftActivation(t *Token, w *WME, b Env) {
 	newToken.joinResults = list.New()
 	for e := node.amem.items.Front(); e != nil; e = e.Next() {
 		w := e.Value.(*WME)
-		if node.perform_join_tests(newToken, w) {
+		if node.performJoinTests(newToken, w) {
 			jr := &NegativeJoinResult{
 				owner: newToken,
 				wme:   w,
@@ -55,7 +55,7 @@ func (node *NegativeNode) LeftActivation(t *Token, w *WME, b Env) {
 func (node *NegativeNode) RightActivation(w *WME) {
 	for e := node.items.Front(); e != nil; e = e.Next() {
 		t := e.Value.(*Token)
-		if node.perform_join_tests(t, w) {
+		if node.performJoinTests(t, w) {
 			if t.joinResults.Len() == 0 {
 				t.deleteTokenAndDescendents()
 			}
@@ -69,11 +69,11 @@ func (node *NegativeNode) RightActivation(w *WME) {
 		}
 	}
 }
-func (node *NegativeNode) perform_join_tests(t *Token, w *WME) bool {
+func (node *NegativeNode) performJoinTests(t *Token, w *WME) bool {
 	for e := node.tests.Front(); e != nil; e = e.Next() {
 		test := e.Value.(*TestAtJoinNode)
 		arg1 := w.fields[test.fieldOfArg1]
-		wme2 := t.get_wmes()[test.conditionNumberOfArg2]
+		wme2 := t.getWMEs()[test.conditionNumberOfArg2]
 		arg2 := wme2.fields[test.fieldOfArg2]
 		if arg1 != arg2 {
 			return false
