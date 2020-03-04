@@ -10,19 +10,19 @@ type NccPartnerNode struct {
 	newResultBuffer   *list.List
 }
 
-func (node NccPartnerNode) GetNodeType() string {
+func (node *NccPartnerNode) GetNodeType() string {
 	return NccPartnerNodeTy
 }
-func (node NccPartnerNode) GetParent() IReteNode {
+func (node *NccPartnerNode) GetParent() IReteNode {
 	return node.parent
 }
-func (node NccPartnerNode) GetItems() *list.List {
+func (node *NccPartnerNode) GetItems() *list.List {
 	return nil
 }
-func (node NccPartnerNode) GetChildren() *list.List {
+func (node *NccPartnerNode) GetChildren() *list.List {
 	return node.children
 }
-func (node NccPartnerNode) LeftActivation(t *Token, w *WME, b Env) {
+func (node *NccPartnerNode) LeftActivation(t *Token, w *WME, b Env) {
 	nccNode := node.nccNode
 	newResult := makeToken(node, t, w, b)
 	ownersT := t
@@ -42,5 +42,5 @@ func (node NccPartnerNode) LeftActivation(t *Token, w *WME, b Env) {
 	}
 	node.newResultBuffer.PushBack(newResult)
 }
-func (node NccPartnerNode) RightActivation(w *WME) {
+func (node *NccPartnerNode) RightActivation(w *WME) {
 }
