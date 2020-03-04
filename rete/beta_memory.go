@@ -11,19 +11,19 @@ type BetaMemory struct {
 	RHS      *RHS
 }
 
-func (node BetaMemory) GetNodeType() string {
+func (node *BetaMemory) GetNodeType() string {
 	return BetaMemoryNodeTy
 }
 
-func (node BetaMemory) GetItems() *list.List {
+func (node *BetaMemory) GetItems() *list.List {
 	return node.items
 }
 
-func (node BetaMemory) GetParent() IReteNode {
+func (node *BetaMemory) GetParent() IReteNode {
 	return node.parent
 }
 
-func (node BetaMemory) GetChildren() *list.List {
+func (node *BetaMemory) GetChildren() *list.List {
 	return node.children
 }
 
@@ -35,17 +35,17 @@ func (node *BetaMemory) LeftActivation(t *Token, w *WME, b Env) {
 	}
 }
 
-func (node BetaMemory) RightActivation(w *WME) {
+func (node *BetaMemory) RightActivation(w *WME) {
 }
 
-func (node BetaMemory) GetExecuteParam(s string) interface{} {
+func (node *BetaMemory) GetExecuteParam(s string) interface{} {
 	if node.RHS == nil {
 		return nil
 	}
 	return node.RHS.Extra[s]
 }
 
-func (node BetaMemory) PopToken() *Token {
+func (node *BetaMemory) PopToken() *Token {
 	e := node.items.Front()
 	if e == nil {
 		return nil

@@ -122,8 +122,9 @@ func (n *Network) AddWME(w *WME) {
 	n.alphaRoot.activation(w)
 }
 
-func (n Network) buildOrShareNetworkForConditions(
-	parent IReteNode, rule LHS, earlierConds LHS) IReteNode {
+func (n *Network) buildOrShareNetworkForConditions(
+	parent IReteNode, rule LHS, earlierConds LHS,
+) IReteNode {
 	currentNode := parent
 	condsHigherUp := earlierConds
 	for _, cond := range rule.items {

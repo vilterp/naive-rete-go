@@ -16,7 +16,7 @@ type ConstantTestNode struct {
 	children       *list.List
 }
 
-func (node ConstantTestNode) activation(w *WME) {
+func (node *ConstantTestNode) activation(w *WME) {
 	if node.fieldToTest != NoTest {
 		if w.fields[node.fieldToTest] != node.fieldMustEqual {
 			return

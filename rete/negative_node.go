@@ -16,13 +16,13 @@ type NegativeNode struct {
 	tests    *list.List
 }
 
-func (node NegativeNode) GetNodeType() string {
+func (node *NegativeNode) GetNodeType() string {
 	return NegativeNodeTy
 }
-func (node NegativeNode) GetParent() IReteNode {
+func (node *NegativeNode) GetParent() IReteNode {
 	return node.parent
 }
-func (node NegativeNode) GetItems() *list.List {
+func (node *NegativeNode) GetItems() *list.List {
 	return node.items
 }
 func (node *NegativeNode) GetChildren() *list.List {

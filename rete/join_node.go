@@ -16,16 +16,16 @@ type JoinNode struct {
 	has      *Has
 }
 
-func (node JoinNode) GetNodeType() string {
+func (node *JoinNode) GetNodeType() string {
 	return JoinNodeTy
 }
-func (node JoinNode) GetItems() *list.List {
+func (node *JoinNode) GetItems() *list.List {
 	return nil
 }
-func (node JoinNode) GetParent() IReteNode {
+func (node *JoinNode) GetParent() IReteNode {
 	return node.parent
 }
-func (node JoinNode) GetChildren() *list.List {
+func (node *JoinNode) GetChildren() *list.List {
 	return node.children
 }
 func (node *JoinNode) RightActivation(w *WME) {

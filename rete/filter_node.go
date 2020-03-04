@@ -10,16 +10,16 @@ type FilterNode struct {
 	tmpl     string
 }
 
-func (node FilterNode) GetNodeType() string {
+func (node *FilterNode) GetNodeType() string {
 	return FilterNodeTy
 }
-func (node FilterNode) GetItems() *list.List {
+func (node *FilterNode) GetItems() *list.List {
 	return nil
 }
-func (node FilterNode) GetParent() IReteNode {
+func (node *FilterNode) GetParent() IReteNode {
 	return node.parent
 }
-func (node FilterNode) GetChildren() *list.List {
+func (node *FilterNode) GetChildren() *list.List {
 	return node.children
 }
 func (node *FilterNode) RightActivation(w *WME) {
